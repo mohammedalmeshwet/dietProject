@@ -21,13 +21,13 @@ Route::group(['prefix' => 'user','namespace' => 'User'],function(){
     Route::post('register',[UserController::class,'store']);
     Route::put('personal-information/{id}',[UserController::class,'update']);
     Route::delete('delete/{id}',[UserController::class,'destroy']);
-    Route::get('login',[AuthUserController::class,'login']);
-    Route::get('logout',[AuthUserController::class,'logout']) -> middleware(['auth.guard:user-api']);
+    Route::post('login',[AuthUserController::class,'login']);
+    Route::post('logout',[AuthUserController::class,'logout']) -> middleware(['auth.guard:user-api']);
 });
 
 
 Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
-    Route::get('login',[AuthAdminController::class,'login']);
-    Route::get('logout',[AuthAdminController::class,'logout']) -> middleware(['auth.guard:admin-api']);
+    Route::post('login',[AuthAdminController::class,'login']);
+    Route::post('logout',[AuthAdminController::class,'logout']) -> middleware(['auth.guard:admin-api']);
     Route::delete('delete-user/{id}',[UserController::class,'destroy']);
 });
