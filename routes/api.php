@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\User\AuthUserController;
 use App\Http\Controllers\Api\User\UserController;
+use App\Http\Controllers\Api\Diet\DietController;
 use App\Http\Controllers\Api\Admin\AuthAdminController;
 
 
@@ -10,6 +11,7 @@ use App\Http\Controllers\Api\Admin\AuthAdminController;
 //Route User
 
 Route::group(['prefix' => 'user','namespace' => 'User'],function(){
+    Route::get('diet/{diet_id}',[DietController::class,'getDietById']);
     Route::post('register',[UserController::class,'store']);
     Route::put('personal-information/{id}',[UserController::class,'update']);
     Route::delete('delete/{id}',[UserController::class,'destroy']);
